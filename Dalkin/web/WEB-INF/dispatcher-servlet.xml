@@ -20,10 +20,11 @@
     <mvc:view-controller path="/registrarLocal.htm" view-name="registrarLocal"/>
     <mvc:view-controller path="/ingresarUsuario.htm" view-name="ingresarUsuario"/>
     <mvc:view-controller path="/registrarUsuario.htm" view-name="registrarUsuario"/>
+    <mvc:view-controller path="/registrarComuna.htm" view-name="registrarComuna"/>
 
-    <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
+      <!-- <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
-    <!--
+ 
     Most controllers will use the ControllerClassNameHandlerMapping above, but
     for the index controller we are using ParameterizableViewController, so we must
     define an explicit mapping for it.
