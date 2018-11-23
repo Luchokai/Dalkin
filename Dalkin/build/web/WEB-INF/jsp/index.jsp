@@ -32,7 +32,7 @@
 								<li class="active"><a href="index.htm">Inicio</a></li>
 								<li><a href="#">(------)</a></li>
 								<li><a href="#">(------)</a></li>
-								<li><a href="#">(------)</a></li>
+								<li><a href="registrarUsuario.htm">Registrar Usuario</a></li>
 								<li><a href="ingresarUsuario.htm">Ingresar</a></li>
 								<li><a href="registrarLocal.htm">Registrar Local</a></li>
 							</ul>
@@ -73,7 +73,7 @@
 				<li class="menu_mm"><a href="index.htm">Inicio</a></li>
 				<li class="menu_mm"><a href="#">(------)</a></li>
 				<li class="menu_mm"><a href="#">(------)</a></li>
-				<li class="menu_mm"><a href="#">(------)</a></li>
+				<li class="menu_mm"><a href="registrarUsuario.htm">Registrar Usuario</a></li>
 				<li class="menu_mm"><a href="ingresarUsuario.htm">Ingresar</a></li>
 				<li class="menu_mm"><a href="registrarLocal.htm">Registrar Local</a></li>
 			</ul>
