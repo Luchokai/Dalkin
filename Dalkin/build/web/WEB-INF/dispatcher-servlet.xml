@@ -19,6 +19,7 @@
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
     <mvc:view-controller path="/registrarLocal.htm" view-name="registrarLocal"/>
     <mvc:view-controller path="/ingresarUsuario.htm" view-name="ingresarUsuario"/>
+    <mvc:view-controller path="/registrarUsuario.htm" view-name="registrarUsuario"/>
 
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
 
