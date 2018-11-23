@@ -91,7 +91,7 @@
                                 <!-- Post Comment -->
                                 <div class="post_comment">
                                     <div class="contact_form_container">
-                                        <form action="ver_Usuario.htm" method="POST">
+                                        <form action="verr.htm" method="POST">
 
                                             <input type="text" class="contact_input contact_input_name" placeholder="Nombre" required="required"  name="nombre">  <br><br/>
                                             <input type="text" class="contact_input contact_input_name" placeholder="Descripcion" required="required" name="descripcion">  <br><br/>
