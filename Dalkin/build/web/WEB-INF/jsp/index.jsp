@@ -34,7 +34,7 @@
 								<li><a href="#">Gadgets</a></li>
 								<li><a href="#">Lifestyle</a></li>
 								<li><a href="#">Video</a></li>
-								<li><a href="contact.html">Contact</a></li>
+								<li><a href="registrarLocal.htm">Registrar Local</a></li>
 							</ul>
 						</nav>
 						<div class="search_container ml-auto">
@@ -75,7 +75,7 @@
 				<li class="menu_mm"><a href="#">Gadgets</a></li>
 				<li class="menu_mm"><a href="#">Lifestyle</a></li>
 				<li class="menu_mm"><a href="#">Video</a></li>
-				<li class="menu_mm"><a href="contact.html">Contact</a></li>
+				<li class="menu_mm"><a href="registrarLocal.htm">Registrar Local</a></li>
 			</ul>
 		</nav>
 	</div>
