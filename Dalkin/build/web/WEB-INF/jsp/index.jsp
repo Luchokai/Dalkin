@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Avision</title>
+<title>Dalkin</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Demo project">
@@ -26,14 +26,14 @@
 			<div class="row">
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
-						<div class="logo"><a href="#">avision</a></div>
+						<div class="logo"><a href="#">Dalkin</a></div>
 						<nav class="main_nav">
 							<ul>
-								<li class="active"><a href="index.html">Home</a></li>
-								<li><a href="#">Fashion</a></li>
-								<li><a href="#">Gadgets</a></li>
-								<li><a href="#">Lifestyle</a></li>
-								<li><a href="#">Video</a></li>
+								<li class="active"><a href="index.htm">Inicio</a></li>
+								<li><a href="#">(------)</a></li>
+								<li><a href="#">(------)</a></li>
+								<li><a href="#">(------)</a></li>
+								<li><a href="ingresarUsuario.htm">Ingresar</a></li>
 								<li><a href="registrarLocal.htm">Registrar Local</a></li>
 							</ul>
 						</nav>
@@ -61,7 +61,7 @@
 
 	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-		<div class="logo menu_mm"><a href="#">Avision</a></div>
+		<div class="logo menu_mm"><a href="#">Dalkin</a></div>
 		<div class="search">
 			<form action="#">
 				<input type="search" class="header_search_input menu_mm" required="required" placeholder="Type to Search...">
@@ -70,11 +70,11 @@
 		</div>
 		<nav class="menu_nav">
 			<ul class="menu_mm">
-				<li class="menu_mm"><a href="index.html">home</a></li>
-				<li class="menu_mm"><a href="#">Fashion</a></li>
-				<li class="menu_mm"><a href="#">Gadgets</a></li>
-				<li class="menu_mm"><a href="#">Lifestyle</a></li>
-				<li class="menu_mm"><a href="#">Video</a></li>
+				<li class="menu_mm"><a href="index.htm">Inicio</a></li>
+				<li class="menu_mm"><a href="#">(------)</a></li>
+				<li class="menu_mm"><a href="#">(------)</a></li>
+				<li class="menu_mm"><a href="#">(------)</a></li>
+				<li class="menu_mm"><a href="ingresarUsuario.htm">Ingresar</a></li>
 				<li class="menu_mm"><a href="registrarLocal.htm">Registrar Local</a></li>
 			</ul>
 		</nav>
@@ -1435,23 +1435,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
 					</div>
 				</div>
-				<div class="col-lg-3 order-lg-2 order-1">
-					<div class="subscribe">
-						<div class="subscribe_background"></div>
-						<div class="subscribe_content">
-							<div class="subscribe_title">Subscribe</div>
-							<form action="#">
-								<input type="email" class="sub_input" placeholder="Your Email" required="required">
-								<button class="sub_button">
-									<svg version="1.1" id="link_arrow_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-										 width="19px" height="13px" viewBox="0 0 19 13" enable-background="new 0 0 19 13" xml:space="preserve">
-										<polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
-									</svg>
-								</button>
-							</form>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</footer>
