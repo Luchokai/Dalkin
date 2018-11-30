@@ -3,23 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControladorJPA;
+package ControllerJPA;
 
-import ControladorJPA.exceptions.NonexistentEntityException;
-import ControladorJPA.exceptions.RollbackFailureException;
+import ControllerJPA.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Modelo.Producto;
-import Modelo.TipoComida;
+import Model.Producto;
+import Model.TipoComida;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.transaction.UserTransaction;
 
 /**
  *
@@ -27,25 +25,23 @@ import javax.transaction.UserTransaction;
  */
 public class TipoComidaJpaController implements Serializable {
 
-    public TipoComidaJpaController(UserTransaction utx, EntityManagerFactory emf) {
-        this.utx = utx;
+    public TipoComidaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private UserTransaction utx = null;
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public void create(TipoComida tipoComida) throws RollbackFailureException, Exception {
+    public void create(TipoComida tipoComida) {
         if (tipoComida.getProductoCollection() == null) {
             tipoComida.setProductoCollection(new ArrayList<Producto>());
         }
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             Collection<Producto> attachedProductoCollection = new ArrayList<Producto>();
             for (Producto productoCollectionProductoToAttach : tipoComida.getProductoCollection()) {
                 productoCollectionProductoToAttach = em.getReference(productoCollectionProductoToAttach.getClass(), productoCollectionProductoToAttach.getId());
@@ -62,14 +58,7 @@ public class TipoComidaJpaController implements Serializable {
                     oldTipoComidaIdOfProductoCollectionProducto = em.merge(oldTipoComidaIdOfProductoCollectionProducto);
                 }
             }
-            utx.commit();
-        } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
-            throw ex;
+            em.getTransaction().commit();
         } finally {
             if (em != null) {
                 em.close();
@@ -77,11 +66,11 @@ public class TipoComidaJpaController implements Serializable {
         }
     }
 
-    public void edit(TipoComida tipoComida) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(TipoComida tipoComida) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             TipoComida persistentTipoComida = em.find(TipoComida.class, tipoComida.getId());
             Collection<Producto> productoCollectionOld = persistentTipoComida.getProductoCollection();
             Collection<Producto> productoCollectionNew = tipoComida.getProductoCollection();
@@ -110,13 +99,8 @@ public class TipoComidaJpaController implements Serializable {
                     }
                 }
             }
-            utx.commit();
+            em.getTransaction().commit();
         } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Integer id = tipoComida.getId();
@@ -132,11 +116,11 @@ public class TipoComidaJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             TipoComida tipoComida;
             try {
                 tipoComida = em.getReference(TipoComida.class, id);
@@ -150,14 +134,7 @@ public class TipoComidaJpaController implements Serializable {
                 productoCollectionProducto = em.merge(productoCollectionProducto);
             }
             em.remove(tipoComida);
-            utx.commit();
-        } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
-            throw ex;
+            em.getTransaction().commit();
         } finally {
             if (em != null) {
                 em.close();

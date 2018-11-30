@@ -3,24 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControladorJPA;
+package ControllerJPA;
 
-import ControladorJPA.exceptions.NonexistentEntityException;
-import ControladorJPA.exceptions.RollbackFailureException;
-import Modelo.Cliente;
+import ControllerJPA.exceptions.NonexistentEntityException;
+import Model.Cliente;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Modelo.Puntuacion;
+import Model.Puntuacion;
 import java.util.ArrayList;
 import java.util.Collection;
-import Modelo.LocalComida;
+import Model.LocalComida;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.transaction.UserTransaction;
 
 /**
  *
@@ -28,18 +26,16 @@ import javax.transaction.UserTransaction;
  */
 public class ClienteJpaController implements Serializable {
 
-    public ClienteJpaController(UserTransaction utx, EntityManagerFactory emf) {
-        this.utx = utx;
+    public ClienteJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private UserTransaction utx = null;
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public void create(Cliente cliente) throws RollbackFailureException, Exception {
+    public void create(Cliente cliente) {
         if (cliente.getPuntuacionCollection() == null) {
             cliente.setPuntuacionCollection(new ArrayList<Puntuacion>());
         }
@@ -48,8 +44,8 @@ public class ClienteJpaController implements Serializable {
         }
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             Collection<Puntuacion> attachedPuntuacionCollection = new ArrayList<Puntuacion>();
             for (Puntuacion puntuacionCollectionPuntuacionToAttach : cliente.getPuntuacionCollection()) {
                 puntuacionCollectionPuntuacionToAttach = em.getReference(puntuacionCollectionPuntuacionToAttach.getClass(), puntuacionCollectionPuntuacionToAttach.getId());
@@ -81,14 +77,7 @@ public class ClienteJpaController implements Serializable {
                     oldClienteIdOfLocalComidaCollectionLocalComida = em.merge(oldClienteIdOfLocalComidaCollectionLocalComida);
                 }
             }
-            utx.commit();
-        } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
-            throw ex;
+            em.getTransaction().commit();
         } finally {
             if (em != null) {
                 em.close();
@@ -96,11 +85,11 @@ public class ClienteJpaController implements Serializable {
         }
     }
 
-    public void edit(Cliente cliente) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(Cliente cliente) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             Cliente persistentCliente = em.find(Cliente.class, cliente.getId());
             Collection<Puntuacion> puntuacionCollectionOld = persistentCliente.getPuntuacionCollection();
             Collection<Puntuacion> puntuacionCollectionNew = cliente.getPuntuacionCollection();
@@ -155,13 +144,8 @@ public class ClienteJpaController implements Serializable {
                     }
                 }
             }
-            utx.commit();
+            em.getTransaction().commit();
         } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Integer id = cliente.getId();
@@ -177,11 +161,11 @@ public class ClienteJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             Cliente cliente;
             try {
                 cliente = em.getReference(Cliente.class, id);
@@ -200,14 +184,7 @@ public class ClienteJpaController implements Serializable {
                 localComidaCollectionLocalComida = em.merge(localComidaCollectionLocalComida);
             }
             em.remove(cliente);
-            utx.commit();
-        } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
-            throw ex;
+            em.getTransaction().commit();
         } finally {
             if (em != null) {
                 em.close();

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -27,13 +27,13 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author luisa
  */
 @Entity
-@Table(name = "tipo_preparacion")
+@Table(name = "tipo_comida")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "TipoPreparacion.findAll", query = "SELECT t FROM TipoPreparacion t")
-    , @NamedQuery(name = "TipoPreparacion.findById", query = "SELECT t FROM TipoPreparacion t WHERE t.id = :id")
-    , @NamedQuery(name = "TipoPreparacion.findByNombre", query = "SELECT t FROM TipoPreparacion t WHERE t.nombre = :nombre")})
-public class TipoPreparacion implements Serializable {
+    @NamedQuery(name = "TipoComida.findAll", query = "SELECT t FROM TipoComida t")
+    , @NamedQuery(name = "TipoComida.findById", query = "SELECT t FROM TipoComida t WHERE t.id = :id")
+    , @NamedQuery(name = "TipoComida.findByNombre", query = "SELECT t FROM TipoComida t WHERE t.nombre = :nombre")})
+public class TipoComida implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -46,17 +46,17 @@ public class TipoPreparacion implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "nombre")
     private String nombre;
-    @OneToMany(mappedBy = "tipoPreparacionId")
+    @OneToMany(mappedBy = "tipoComidaId")
     private Collection<Producto> productoCollection;
 
-    public TipoPreparacion() {
+    public TipoComida() {
     }
 
-    public TipoPreparacion(Integer id) {
+    public TipoComida(Integer id) {
         this.id = id;
     }
 
-    public TipoPreparacion(Integer id, String nombre) {
+    public TipoComida(Integer id, String nombre) {
         this.id = id;
         this.nombre = nombre;
     }
@@ -96,10 +96,10 @@ public class TipoPreparacion implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof TipoPreparacion)) {
+        if (!(object instanceof TipoComida)) {
             return false;
         }
-        TipoPreparacion other = (TipoPreparacion) object;
+        TipoComida other = (TipoComida) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -108,7 +108,7 @@ public class TipoPreparacion implements Serializable {
 
     @Override
     public String toString() {
-        return "Modelo.TipoPreparacion[ id=" + id + " ]";
+        return "Modelo.TipoComida[ id=" + id + " ]";
     }
     
 }

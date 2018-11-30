@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControladorJPA;
+package ControllerJPA;
 
-import ControladorJPA.exceptions.NonexistentEntityException;
-import ControladorJPA.exceptions.RollbackFailureException;
-import Modelo.Tareas;
+import ControllerJPA.exceptions.NonexistentEntityException;
+import Model.Tareas;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -16,7 +15,6 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.UserTransaction;
 
 /**
  *
@@ -24,31 +22,22 @@ import javax.transaction.UserTransaction;
  */
 public class TareasJpaController implements Serializable {
 
-    public TareasJpaController(UserTransaction utx, EntityManagerFactory emf) {
-        this.utx = utx;
+    public TareasJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
-    private UserTransaction utx = null;
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public void create(Tareas tareas) throws RollbackFailureException, Exception {
+    public void create(Tareas tareas) {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             em.persist(tareas);
-            utx.commit();
-        } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
-            throw ex;
+            em.getTransaction().commit();
         } finally {
             if (em != null) {
                 em.close();
@@ -56,19 +45,14 @@ public class TareasJpaController implements Serializable {
         }
     }
 
-    public void edit(Tareas tareas) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(Tareas tareas) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             tareas = em.merge(tareas);
-            utx.commit();
+            em.getTransaction().commit();
         } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Integer id = tareas.getIdTarea();
@@ -84,11 +68,11 @@ public class TareasJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             Tareas tareas;
             try {
                 tareas = em.getReference(Tareas.class, id);
@@ -97,14 +81,7 @@ public class TareasJpaController implements Serializable {
                 throw new NonexistentEntityException("The tareas with id " + id + " no longer exists.", enfe);
             }
             em.remove(tareas);
-            utx.commit();
-        } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
-            throw ex;
+            em.getTransaction().commit();
         } finally {
             if (em != null) {
                 em.close();

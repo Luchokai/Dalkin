@@ -3,23 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ControladorJPA;
+package ControllerJPA;
 
-import ControladorJPA.exceptions.NonexistentEntityException;
-import ControladorJPA.exceptions.RollbackFailureException;
-import Modelo.Comuna;
+import ControllerJPA.exceptions.NonexistentEntityException;
+import Model.Comuna;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Modelo.LocalComida;
+import Model.LocalComida;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.transaction.UserTransaction;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -27,25 +26,23 @@ import javax.transaction.UserTransaction;
  */
 public class ComunaJpaController implements Serializable {
 
-    public ComunaJpaController(UserTransaction utx, EntityManagerFactory emf) {
-        this.utx = utx;
-        this.emf = emf;
-    }
-    private UserTransaction utx = null;
+    public ComunaJpaController() {
+    emf = Persistence.createEntityManagerFactory("DalkinPU");
+}
     private EntityManagerFactory emf = null;
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
 
-    public void create(Comuna comuna) throws RollbackFailureException, Exception {
+    public void create(Comuna comuna) {
         if (comuna.getLocalComidaCollection() == null) {
             comuna.setLocalComidaCollection(new ArrayList<LocalComida>());
         }
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             Collection<LocalComida> attachedLocalComidaCollection = new ArrayList<LocalComida>();
             for (LocalComida localComidaCollectionLocalComidaToAttach : comuna.getLocalComidaCollection()) {
                 localComidaCollectionLocalComidaToAttach = em.getReference(localComidaCollectionLocalComidaToAttach.getClass(), localComidaCollectionLocalComidaToAttach.getId());
@@ -62,14 +59,7 @@ public class ComunaJpaController implements Serializable {
                     oldComunaIdOfLocalComidaCollectionLocalComida = em.merge(oldComunaIdOfLocalComidaCollectionLocalComida);
                 }
             }
-            utx.commit();
-        } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
-            throw ex;
+            em.getTransaction().commit();
         } finally {
             if (em != null) {
                 em.close();
@@ -77,11 +67,11 @@ public class ComunaJpaController implements Serializable {
         }
     }
 
-    public void edit(Comuna comuna) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void edit(Comuna comuna) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             Comuna persistentComuna = em.find(Comuna.class, comuna.getId());
             Collection<LocalComida> localComidaCollectionOld = persistentComuna.getLocalComidaCollection();
             Collection<LocalComida> localComidaCollectionNew = comuna.getLocalComidaCollection();
@@ -110,13 +100,8 @@ public class ComunaJpaController implements Serializable {
                     }
                 }
             }
-            utx.commit();
+            em.getTransaction().commit();
         } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Integer id = comuna.getId();
@@ -132,11 +117,11 @@ public class ComunaJpaController implements Serializable {
         }
     }
 
-    public void destroy(Integer id) throws NonexistentEntityException, RollbackFailureException, Exception {
+    public void destroy(Integer id) throws NonexistentEntityException {
         EntityManager em = null;
         try {
-            utx.begin();
             em = getEntityManager();
+            em.getTransaction().begin();
             Comuna comuna;
             try {
                 comuna = em.getReference(Comuna.class, id);
@@ -150,14 +135,7 @@ public class ComunaJpaController implements Serializable {
                 localComidaCollectionLocalComida = em.merge(localComidaCollectionLocalComida);
             }
             em.remove(comuna);
-            utx.commit();
-        } catch (Exception ex) {
-            try {
-                utx.rollback();
-            } catch (Exception re) {
-                throw new RollbackFailureException("An error occurred attempting to roll back the transaction.", re);
-            }
-            throw ex;
+            em.getTransaction().commit();
         } finally {
             if (em != null) {
                 em.close();
