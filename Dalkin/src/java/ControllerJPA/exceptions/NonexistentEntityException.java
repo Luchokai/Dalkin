@@ -1,4 +1,4 @@
-package ControladorJPA.exceptions;
+package ControllerJPA.exceptions;
 
 public class NonexistentEntityException extends Exception {
     public NonexistentEntityException(String message, Throwable cause) {
