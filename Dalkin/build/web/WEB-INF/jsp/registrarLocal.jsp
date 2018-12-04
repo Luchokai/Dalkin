@@ -1,3 +1,5 @@
+<%@page import="Model.Comuna"%>
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -93,6 +95,22 @@
                                     <div class="contact_form_container">
                                         <form action="ver.htm" method="POST">
 
+                                            
+                                            <%
+                                            List<Comuna>comunas =  (List<Comuna>) request.getAttribute("comunas");
+                                            %>
+  
+                                              <select id="country" name="country">
+                                                  <% 
+                                                  for(Comuna comuna : comunas){
+                                                  %>
+                                                    <option value="<% out.write(comuna.getId()) ;%>"><% out.write(comuna.getNombre());%></option>
+                                                  <%
+                                                  }
+                                                  %>
+                                             </select> 
+                                                
+                                                
                                             <input type="text" class="contact_input contact_input_name" placeholder="Nombre" required="required"  name="nombre">  <br><br/>
                                             <input type="text" class="contact_input contact_input_name" placeholder="Descripcion" required="required" name="descripcion">  <br><br/>
                                             <input type="text" class="contact_input contact_input_name" placeholder="Rut" required="required" name="rut">  <br><br/>
