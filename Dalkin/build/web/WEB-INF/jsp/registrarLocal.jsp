@@ -1,3 +1,4 @@
+<%@page import="Model.Cliente"%>
 <%@page import="Model.Comuna"%>
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
@@ -95,34 +96,50 @@
                                     <div class="contact_form_container">
                                         <form action="ver.htm" method="POST">
 
-                                            
+
                                             <%
-                                            List<Comuna>comunas =  (List<Comuna>) request.getAttribute("comunas");
+                                                List<Comuna> comunas = (List<Comuna>) request.getAttribute("comunas");
                                             %>
-  
-                                              <select id="country" name="country">
-                                                  <% 
-                                                  for(Comuna comuna : comunas){
-                                                  %>
-                                                    <option value="<% out.write(comuna.getId()) ;%>"><% out.write(comuna.getNombre());%></option>
-                                                  <%
-                                                  }
-                                                  %>
-                                             </select> 
-                                                
-                                                
+
+                                            <select id="country" name="country">
+                                                <%
+                                                    for (Comuna comuna : comunas) {
+                                                %>
+                                                <option value="<% out.write(comuna.getId());%>"><% out.write(comuna.getNombre());%></option>
+                                                <%
+                                                    }
+                                                %>
+                                            </select> 
+
+
+
+                                            <%
+                                                List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
+                                            %>
+
+                                            <select id="country" name="country">
+                                                <%
+                                                    for (Cliente cliente : clientes) {
+                                                %>
+                                                <option value="<% out.write(cliente.getId());%>"><% out.write(cliente.getNombre());%></option>
+                                                <%
+                                                    }
+                                                %>
+                                            </select> 
+
+
                                             <input type="text" class="contact_input contact_input_name" placeholder="Nombre" required="required"  name="nombre">  <br><br/>
                                             <input type="text" class="contact_input contact_input_name" placeholder="Descripcion" required="required" name="descripcion">  <br><br/>
                                             <input type="text" class="contact_input contact_input_name" placeholder="Rut" required="required" name="rut">  <br><br/>
                                             <input type="text" class="contact_input contact_input_name" placeholder="Direccion" required="required" name="direccion">  <br><br/>
                                             <input type="text"class="contact_input contact_input_name" placeholder="Telefono" required="required"  name="telefono">  <br><br/>
                                             <input type="text" class="contact_input contact_input_name" placeholder="Correo" required="required"  name="correo">  <br><br/>
-                                            
-                                            
+
+
                                             <select name="comuna"   >
                                                 <option value="${requestScope.comuna.nombre}"></option>
                                             </select>  
-                                            
+
                                             <select name="cliente" >
                                                 <option value="${requestScope.cliente.nombre}"></option>
                                             </select>
@@ -161,7 +178,7 @@
                                     <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </footer>
