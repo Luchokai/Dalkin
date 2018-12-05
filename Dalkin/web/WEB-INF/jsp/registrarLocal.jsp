@@ -89,14 +89,25 @@
                 <div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/regular.jpg" data-speed="0.8"></div>
                 <div class="home_content">
                     <div class="container">
-                        <div class="row">
-                            <div class="col-lg-7 offset-lg-3 ">
+                        <div class="column">
+                            <div class="col-lg-7 offset-lg-2 ">
+
                                 <!-- Post Comment -->
                                 <div class="post_comment">
                                     <div class="contact_form_container">
-                                        <form action="ver.htm" method="POST">
+                                        
+                                        
+                                        <form action="reglocal.htm" method="POST">
+
+                                            <input type="text"  placeholder="Nombre" required="required"  name="nombre">  <br><br/>
+                                            <input type="text"  placeholder="Descripcion" required="required" name="descripcion">  <br><br/>
+                                            <input type="text"  placeholder="Rut" required="required" name="rut">  <br><br/>
+                                            <input type="text"  placeholder="Direccion" required="required" name="direccion">  <br><br/>
+                                            <input type="text"  placeholder="Telefono" required="required"  name="telefono">  <br><br/>
+                                            <input type="text"  placeholder="Correo" required="required"  name="correo">  <br><br/>
 
 
+                                            <!--    //mostra combo de comuna  -->
                                             <%
                                                 List<Comuna> comunas = (List<Comuna>) request.getAttribute("comunas");
                                             %>
@@ -113,6 +124,7 @@
 
 
 
+                                            <!-- //mostra combo de cliente -->
                                             <%
                                                 List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
                                             %>
@@ -127,25 +139,11 @@
                                                 %>
                                             </select> 
 
-
-                                            <input type="text" class="contact_input contact_input_name" placeholder="Nombre" required="required"  name="nombre">  <br><br/>
-                                            <input type="text" class="contact_input contact_input_name" placeholder="Descripcion" required="required" name="descripcion">  <br><br/>
-                                            <input type="text" class="contact_input contact_input_name" placeholder="Rut" required="required" name="rut">  <br><br/>
-                                            <input type="text" class="contact_input contact_input_name" placeholder="Direccion" required="required" name="direccion">  <br><br/>
-                                            <input type="text"class="contact_input contact_input_name" placeholder="Telefono" required="required"  name="telefono">  <br><br/>
-                                            <input type="text" class="contact_input contact_input_name" placeholder="Correo" required="required"  name="correo">  <br><br/>
+                                            <br><br/>
 
 
-                                            <select name="comuna"   >
-                                                <option value="${requestScope.comuna.nombre}"></option>
-                                            </select>  
 
-                                            <select name="cliente" >
-                                                <option value="${requestScope.cliente.nombre}"></option>
-                                            </select>
-
-
-                                            <button type="submit" class="contact_button">Registrar</button>
+                                            <button type="submit" class="contact_button">Guardar</button>
                                         </form>
                                     </div>
                                 </div>
@@ -164,14 +162,7 @@
                             <div class="footer_content">
                                 <div class="footer_logo"><a href="#">Dalkin</a></div>
                                 <div class="footer_social">
-                                    <ul>
-                                        <li class="footer_social_facebook"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                                        <li class="footer_social_twitter"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                                        <li class="footer_social_pinterest"><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-                                        <li class="footer_social_vimeo"><a href="#"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
-                                        <li class="footer_social_instagram"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-                                        <li class="footer_social_google"><a href="#"><i class="fa fa-google" aria-hidden="true"></i></a></li>
-                                    </ul>
+
                                 </div>
                                 <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                     Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>

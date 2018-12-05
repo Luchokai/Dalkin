@@ -21,6 +21,7 @@ import Model.Producto;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 /**
  *
@@ -28,8 +29,8 @@ import javax.persistence.EntityManagerFactory;
  */
 public class LocalComidaJpaController implements Serializable {
 
-    public LocalComidaJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    public LocalComidaJpaController() {
+    emf = Persistence.createEntityManagerFactory("DalkinPU");
     }
     private EntityManagerFactory emf = null;
 
