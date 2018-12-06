@@ -9,6 +9,7 @@ import Model.Comuna;
 import Model.LocalComida;
 
 import java.util.List;
+import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,11 +22,11 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author KevinRoss
  */
 @Controller
-@RequestMapping("/reglocal.htm")
+@PersistenceContext(unitName = "DalkinPU")
 public class RegistrarLocalControlador {
-
-    @RequestMapping(method = RequestMethod.GET)
-    public String otroMetodo(Model model) {
+    
+@RequestMapping(value="/ver_local.htm", method = RequestMethod.GET)
+    public String mostrarCombobox(Model model) {
         List<Comuna> comunas = null;
 
         ComunaJpaController comunasdb = new ComunaJpaController();
@@ -43,48 +44,40 @@ public class RegistrarLocalControlador {
 
         return "registrarLocal";
     }
-
+   
+@RequestMapping(value="/guardar_cliente.htm", method = RequestMethod.POST)
     public String recibir(@RequestParam("nombre") String nombre,
             @RequestParam("descripcion") String descripcion,
             @RequestParam("rut") String rut,
             @RequestParam("direccion") String direccion,
             @RequestParam("telefono") String telefono,
             @RequestParam("correo") String correo,
+            @RequestParam("comuna") int comuna,
+            @RequestParam("cliente") int cliente,
             Model model) {
 
-        if (nombre.trim().equals("")) {
-            return "error500";
-        } else {
+        LocalComida l = new LocalComida();
+        l.setNombre(nombre);
+        l.setDescripcion(descripcion);
+        l.setRut(rut);
+        l.setDescripcion(direccion);
+        l.setTelefono(telefono);
+        l.setCorreo(correo);
+        Comuna c = new Comuna();
+        c.setId(comuna);
+        l.setComunaId(c);
+        Cliente cl = new Cliente();
+        cl.setId(cliente);
+        l.setClienteId(cl);
 
-            LocalComida l = new LocalComida();
-            l.setNombre(nombre);
-            l.setDescripcion(nombre);
-            l.setRut(nombre);
-            l.setDescripcion(nombre);
-            l.setTelefono(nombre);
-            l.setCorreo(nombre);
+        LocalComidaJpaController localcomii = new LocalComidaJpaController();
 
-            LocalComidaJpaController localcomii = new LocalComidaJpaController();
+        localcomii.create(l);
 
-            localcomii.create(l);
-
-            model.addAttribute("cliente", l);
-            return "registroCompleto"; //nombre de la vista 
-        }
+        model.addAttribute("cliente", l);
+        return "registroCompleto"; //nombre de la vista 
 
     }
 
-    //siempre los metodos deben retornar un string en los controladores
-    @RequestMapping(value = "/ver_local.htm", method = RequestMethod.POST)
-    public String recibir(@RequestParam("nombre") String nombre, @RequestParam("rut") String rut, @RequestParam("direccion") String direccion, @RequestParam("telefono") String telefono, @RequestParam("correo") String correo, Model model) {
-
-        List<Comuna> comunas = null;
-
-        ComunaJpaController comunasdb = new ComunaJpaController();
-        comunas = comunasdb.findComunaEntities();
-
-        model.addAttribute("comunas", comunas);
-        return "registroCompleto"; //nombre de la vista       
-    }
 
 }

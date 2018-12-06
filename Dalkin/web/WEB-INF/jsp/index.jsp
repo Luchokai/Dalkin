@@ -34,7 +34,7 @@
 								<li><a href="#">(------)</a></li>
 								<li><a href="registrarUsuario.htm">Registrar Usuario</a></li>
 								<li><a href="ingresarUsuario.htm">Ingresar</a></li>
-								<li><a href="registrarLocal.htm">Registrar Local</a></li>
+								<li><a href="ver_local.htm">Registrar Local</a></li>
 							</ul>
 						</nav>
 						<div class="search_container ml-auto">
@@ -75,7 +75,7 @@
 				<li class="menu_mm"><a href="#">(------)</a></li>
 				<li class="menu_mm"><a href="registrarUsuario.htm">Registrar Usuario</a></li>
 				<li class="menu_mm"><a href="ingresarUsuario.htm">Ingresar</a></li>
-				<li class="menu_mm"><a href="registrarLocal.htm">Registrar Local</a></li>
+				<li class="menu_mm"><a href="ver_local.htm">Registrar Local</a></li>
 			</ul>
 		</nav>
 	</div>
