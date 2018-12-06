@@ -60,12 +60,14 @@ public class RegistrarLocalControlador {
         l.setNombre(nombre);
         l.setDescripcion(descripcion);
         l.setRut(rut);
-        l.setDescripcion(direccion);
+        l.setDireccion(direccion);
         l.setTelefono(telefono);
         l.setCorreo(correo);
+        
         Comuna c = new Comuna();
         c.setId(comuna);
         l.setComunaId(c);
+        
         Cliente cl = new Cliente();
         cl.setId(cliente);
         l.setClienteId(cl);
@@ -74,7 +76,7 @@ public class RegistrarLocalControlador {
 
         localcomii.create(l);
 
-        model.addAttribute("cliente", l);
+       
         return "registroCompleto"; //nombre de la vista 
 
     }
