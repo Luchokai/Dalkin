@@ -97,7 +97,7 @@
                                     <div class="contact_form_container">
                                         
                                         
-                                        <form action="reglocal.htm" method="POST">
+                                        <form action="guardar_cliente.htm" method="POST">
 
                                             <input type="text"  placeholder="Nombre" required="required"  name="nombre">  <br><br/>
                                             <input type="text"  placeholder="Descripcion" required="required" name="descripcion">  <br><br/>
@@ -112,7 +112,7 @@
                                                 List<Comuna> comunas = (List<Comuna>) request.getAttribute("comunas");
                                             %>
 
-                                            <select id="country" name="country">
+                                            <select id="comuna" name="comuna">
                                                 <%
                                                     for (Comuna comuna : comunas) {
                                                 %>
@@ -129,7 +129,7 @@
                                                 List<Cliente> clientes = (List<Cliente>) request.getAttribute("clientes");
                                             %>
 
-                                            <select id="country" name="country">
+                                            <select id="cliente" name="cliente">
                                                 <%
                                                     for (Cliente cliente : clientes) {
                                                 %>
@@ -143,7 +143,7 @@
 
 
 
-                                            <button type="submit" class="contact_button">Guardar</button>
+                                            <button type="submit" >Guardar</button>
                                         </form>
                                     </div>
                                 </div>
