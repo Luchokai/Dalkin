@@ -116,7 +116,7 @@
                                                 <%
                                                     for (Comuna comuna : comunas) {
                                                 %>
-                                                <option value="<% out.write(comuna.getId());%>"><% out.write(comuna.getNombre());%></option>
+                                                <option value="<% out.write(comuna.getId().toString());%>"><% out.write(comuna.getNombre());%></option>
                                                 <%
                                                     }
                                                 %>
@@ -133,7 +133,7 @@
                                                 <%
                                                     for (Cliente cliente : clientes) {
                                                 %>
-                                                <option value="<% out.write(cliente.getId());%>"><% out.write(cliente.getNombre());%></option>
+                                                <option value="<% out.write(cliente.getId().toString());%>"><% out.write(cliente.getNombre());%></option>
                                                 <%
                                                     }
                                                 %>
