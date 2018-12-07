@@ -37,17 +37,7 @@
                                         
 							</ul>
 						</nav>
-						<div class="search_container ml-auto">
-							<div class="weather">
-								<div class="temperature">+10°</div>
-								<img class="weather_icon" src="images/cloud.png" alt="">
-							</div>
-							<form action="#">
-								<input type="search" class="header_search_input" required="required" placeholder="Type to Search...">
-								<img class="header_search_icon" src="images/search.png" alt="">
-							</form>
-							
-						</div>
+						
 						<div class="hamburger ml-auto menu_mm">
 							<i class="fa fa-bars trans_200 menu_mm" aria-hidden="true"></i>
 						</div>
@@ -62,12 +52,7 @@
 	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
 		<div class="logo menu_mm"><a href="index.htm">Dalkin</a></div>
-		<div class="search">
-			<form action="#">
-				<input type="search" class="header_search_input menu_mm" required="required" placeholder="Type to Search...">
-				<img class="header_search_icon menu_mm" src="images/search_2.png" alt="">
-			</form>
-		</div>
+		
 		<nav class="menu_nav">
 			<ul class="menu_mm">
 				<li><a href="ver_local.htm">Registrar Local</a></li>
@@ -96,12 +81,12 @@
 							<div class="row">
 								<div class="col">
 									<div class="home_slider_content">
-										<div class="home_slider_item_category trans_200"><a href="category.html" class="trans_200">sport</a></div>
+										<div class="home_slider_item_category trans_200"><a href="category.html" class="trans_200">Comida</a></div>
 										<div class="home_slider_item_title">
-											<a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a>
+											<a href="post.html">Buscas Comida ? </a>
 										</div>
 										<div class="home_slider_item_link">
-											<a href="post.html" class="trans_200">Continue Reading
+											<a href="post.html" class="trans_200">Continual para cargar
 												<svg version="1.1" id="link_arrow_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 													 width="19px" height="13px" viewBox="0 0 19 13" enable-background="new 0 0 19 13" xml:space="preserve">
 													<polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
@@ -122,21 +107,21 @@
 								<!-- Similar Post -->
 								<div class="col-lg-3 col-md-6 similar_post_col">
 									<div class="similar_post trans_200">
-										<a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most</a>
+										<a href="post.html">Como buscar</a>
 									</div>
 								</div>
 
 								<!-- Similar Post -->
 								<div class="col-lg-3 col-md-6 similar_post_col">
 									<div class="similar_post trans_200">
-										<a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most</a>
+										<a href="post.html">:V</a>
 									</div>
 								</div>
 
 								<!-- Similar Post -->
 								<div class="col-lg-3 col-md-6 similar_post_col">
 									<div class="similar_post trans_200">
-										<a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most</a>
+										<a href="post.html">:v</a>
 									</div>
 								</div>
 
