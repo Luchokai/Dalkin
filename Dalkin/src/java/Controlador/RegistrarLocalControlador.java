@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @PersistenceContext(unitName = "DalkinPU")
 public class RegistrarLocalControlador {
     
+  
+    
 @RequestMapping(value="/ver_local.htm", method = RequestMethod.GET)
     public String mostrarCombobox(Model model) {
         List<Comuna> comunas = null;
