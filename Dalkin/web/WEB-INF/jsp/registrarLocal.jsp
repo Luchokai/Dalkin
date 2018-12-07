@@ -32,8 +32,9 @@
                                 <div class="logo"><a href="index.htm">Dalkin</a></div>
                                 <nav class="main_nav">
                                     <ul>
-                                        <li class="active"><a href="index.htm">Inicio</a></li>
+                                   
                                         <li><a href="registrarLocal.htm">Registrar Local</a></li>
+                                        <li><a href="registrarComuna.htm">Registrar Comuna</a></li>
                                         <li><a href="registrarUsuario.htm">Registrar Usuario</a></li>
                                         <li><a href="ingresarUsuario.htm">Ingresar</a></li>
                                     </ul>
@@ -71,8 +72,9 @@
                 </div>
                 <nav class="menu_nav">
                     <ul class="menu_mm">
-                       <li class="active"><a href="index.htm">Inicio</a></li>
+                      
                                         <li><a href="registrarLocal.htm">Registrar Local</a></li>
+                                        <li><a href="registrarComuna.htm">Registrar Comuna</a></li>
                                         <li><a href="registrarUsuario.htm">Registrar Usuario</a></li>
                                         <li><a href="ingresarUsuario.htm">Ingresar</a></li>
                     </ul>
