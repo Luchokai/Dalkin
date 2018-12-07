@@ -86,7 +86,7 @@
 				
 				<!-- Slider Item -->
 				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(images/home_slider.jpg)"></div>
+					<div class="home_slider_background" style="background-image:url(images/home-slider-restaurante.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -139,22 +139,14 @@
 							</div>
 						</div>
 						
-						<div class="home_slider_next_container">
-							<div class="home_slider_next" style="background-image:url(images/home_slider_next.jpg)">
-								<div class="home_slider_next_background trans_400"></div>
-								<div class="home_slider_next_content trans_400">
-									<div class="home_slider_next_title">next</div>
-									<div class="home_slider_next_link">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</div>
-								</div>
-							</div>
-						</div>
+						
 
 					</div>
 				</div>
 
 				<!-- Slider Item -->
 				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(images/home_slider.jpg)"></div>
+					<div class="home_slider_background" style="background-image:url(images/home-slider-restaurante3.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -207,22 +199,14 @@
 							</div>
 						</div>
 						
-						<div class="home_slider_next_container">
-							<div class="home_slider_next" style="background-image:url(images/home_slider_next.jpg)">
-								<div class="home_slider_next_background trans_400"></div>
-								<div class="home_slider_next_content trans_400">
-									<div class="home_slider_next_title">next</div>
-									<div class="home_slider_next_link">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</div>
-								</div>
-							</div>
-						</div>
+						
 
 					</div>
 				</div>
 
 				<!-- Slider Item -->
 				<div class="owl-item">
-					<div class="home_slider_background" style="background-image:url(images/home_slider.jpg)"></div>
+					<div class="home_slider_background" style="background-image:url(images/home-slider-restaurante2.jpg)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -275,15 +259,7 @@
 							</div>
 						</div>
 						
-						<div class="home_slider_next_container">
-							<div class="home_slider_next" style="background-image:url(images/home_slider_next.jpg)">
-								<div class="home_slider_next_background trans_400"></div>
-								<div class="home_slider_next_content trans_400">
-									<div class="home_slider_next_title">next</div>
-									<div class="home_slider_next_link">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</div>
-								</div>
-							</div>
-						</div>
+						
 
 					</div>
 				</div>
